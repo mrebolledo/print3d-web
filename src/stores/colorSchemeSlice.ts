@@ -30,7 +30,7 @@ interface ColorSchemeState {
 
 const getColorScheme = () => {
   const colorScheme = localStorage.getItem("colorScheme");
-  return colorSchemes.filter((item, key) => {
+  return colorSchemes.filter((item) => {
     return item === colorScheme;
   })[0];
 };
@@ -54,7 +54,7 @@ export const { setColorScheme } = colorSchemeSlice.actions;
 
 export const selectColorScheme = (state: RootState) => {
   if (localStorage.getItem("colorScheme") === null) {
-    localStorage.setItem("colorScheme", "default");
+    localStorage.setItem("colorScheme", "theme-17");
   }
 
   return state.colorScheme.value;

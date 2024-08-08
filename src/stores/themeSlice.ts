@@ -68,7 +68,7 @@ interface ThemeState {
 export const getTheme = (search?: Themes["name"]) => {
   const theme = search === undefined ? localStorage.getItem("theme") : search;
   return (
-    themes.filter((item, key) => {
+    themes.filter((item) => {
       return item.name === theme;
     })[0] || themes[0]
   );
@@ -93,7 +93,7 @@ export const { setTheme } = themeSlice.actions;
 
 export const selectTheme = (state: RootState) => {
   if (localStorage.getItem("theme") === null) {
-    localStorage.setItem("theme", "echo");
+    localStorage.setItem("theme", "raze");
   }
 
   return state.theme.value;
