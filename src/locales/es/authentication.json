@@ -1,0 +1,23 @@
+{
+  "already-have-account": "Ya tienes una cuenta?",
+  "app-description": "Esta app te permite medir tus proyectos en tiempos de respuesta en tiempo real",
+  "app-name": "SLA",
+  "app-sub-title": "Mide tus proyectos",
+  "back-to-login": "Volver al inicio",
+  "email": "Correo electronico",
+  "first-name": "Nombre",
+  "forgot-password": "Olvido su contraseña?",
+  "last-name": "Apellido",
+  "login": "Iniciar Sesion",
+  "login-message": "Bienvenido a la app, puedes loguear o crear una cuenta si no tienes una.",
+  "no-account": "No tienes una cuenta?",
+  "password": "Contraseña",
+  "password-confirmation": "Confirmar contraseña",
+  "register": "Registrarse",
+  "remember-me": "Recuerdame",
+  "remembered-password" : "Recorde mi contraseña, ",
+  "forgot-password-message" : "Ingrese su correo, si existe en nuestra base de datos se le enviaran instrucciones",
+  "send-email" : "Enviame el email",
+  "reset-password" : "Cambiar contraseña",
+  "reset-my-password" : "Cambiar mi contraseña"
+}

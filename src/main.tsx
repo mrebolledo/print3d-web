@@ -5,6 +5,7 @@ import { Provider } from "react-redux";
 import { store } from "./stores/store";
 import Router from "./router";
 import "./assets/css/app.css";
+import "./utils/i18n"
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <BrowserRouter>

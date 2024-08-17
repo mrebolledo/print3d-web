@@ -1,40 +1,20 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "./store";
 
-export const langs = [
-    {
-        name: "es",
-    },
-    {
-        name : "en"
-    }
-] as const;
-
-export type Langs = (typeof langs)[number];
 
 interface LangState {
-    value: Langs["name"];
+    value: string;
 }
 
-export const getLang = (search?: Langs["name"]) => {
-    const theme = search === undefined ? localStorage.getItem("lang") : search;
-    return (
-        langs.filter((item : Langs)  => {
-            return item.name === theme;
-        })[0] || langs[0]
-    );
-};
-
 const initialState: LangState = {
-    value:
-        localStorage.getItem("lang") === null ? langs[0].name : getLang().name,
+    value: localStorage.getItem("lang") ?? "es",
 };
 
 export const langSlice = createSlice({
     name: "lang",
     initialState,
     reducers: {
-        setLang: (state, action: PayloadAction<Langs["name"]>) => {
+        setLang: (state, action: PayloadAction<string>) => {
             state.value = action.payload;
         },
     },
@@ -47,7 +27,7 @@ export const selectLang = (state: RootState) => {
         localStorage.setItem("lang", "es");
     }
 
-    return state.lang.value;
+    return state.darkMode.value;
 };
 
 export default langSlice.reducer;

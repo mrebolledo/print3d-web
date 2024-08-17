@@ -37,7 +37,7 @@ const getColorScheme = () => {
 
 const initialState: ColorSchemeState = {
   value:
-    localStorage.getItem("colorScheme") === null ? "default" : getColorScheme(),
+    localStorage.getItem("colorScheme") === null ? "theme-17" : getColorScheme(),
 };
 
 export const colorSchemeSlice = createSlice({

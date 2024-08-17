@@ -1,0 +1,23 @@
+{
+  "already-have-account": "Already have an account?",
+  "app-description": "This app is developed for you, to measure your projects in real-time",
+  "app-name": "SLA",
+  "app-sub-title": "Measure your projects",
+  "back-to-login": "Back to login",
+  "email": "Email",
+  "first-name": "First Name",
+  "forgot-password": "Forgot password?",
+  "last-name": "Last Name",
+  "login": "Login",
+  "login-message": "Welcome to the App, here you can login or register if you don't have an account yet.",
+  "no-account": "don't have an account?",
+  "password": "Password",
+  "password-confirmation": "Password confirmation",
+  "register": "Register",
+  "remember-me": "Remember Me",
+  "remembered-password" : "Remembered your password? , ",
+  "forgot-password-message" : "Input your email, if it matches our data, instructions will be sent",
+  "send-email" : "Send me the email",
+  "reset-password" : "Reset password",
+  "reset-my-password" : "Reset my password"
+}
