@@ -1,7 +1,7 @@
 import { useRoutes } from "react-router-dom";
 import Home from "../pages/Home";
-import Login from "../pages/Login";
-import Register from "../pages/Register";
+import Login from "../pages/User/Auth/Login";
+import Register from "../pages/User/Auth/Register";
 
 import Layout from "../themes";
 
