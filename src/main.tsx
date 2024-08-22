@@ -6,12 +6,15 @@ import { store } from "./stores/store";
 import Router from "./router";
 import "./assets/css/app.css";
 import "./utils/i18n"
+import {AuthProvider} from "@/contexts/AuthContext";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
-  <BrowserRouter>
-    <Provider store={store}>
-      <Router />
-    </Provider>
-    <ScrollToTop />
-  </BrowserRouter>
+    <BrowserRouter>
+        <Provider store={store}>
+            <AuthProvider>
+                <Router />
+            </AuthProvider>
+        </Provider>
+        <ScrollToTop />
+    </BrowserRouter>
 );

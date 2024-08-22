@@ -7,40 +7,50 @@ import ForgotPassword from "../pages/User/Auth/ForgotPassword";
 import ResetPassword from "../pages/User/Auth/ResetPassword";
 
 import Layout from "../themes";
+import ProtectedRoute from "@/router/ProtectedRoute";
+import UnauthenticatedRoute from "@/router/UnauthenticatedRoute";
 
 function Router() {
   const routes = [
     {
-      path: "/",
-      element: <Layout />,
-      children: [
-        {
-          path: "/",
-          element: <Home />,
-        }]
+        element : <ProtectedRoute />,
+        children : [
+            {
+                element: <Layout />,
+                children: [
+                    {
+                        path: "/",
+                        element: <Home />,
+                    }]
+            }
+        ],
     },
     {
-      path : "/",
-      element: <External />,
-      children : [
-          {
-              path: "login",
-              element: <Login />,
-          },
-          {
-              path: "register",
-              element: <Register />,
-          },
-          {
-              path: "forgot-password",
-              element: <ForgotPassword />,
-          },
-          {
-              path: "reset-password",
-              element: <ResetPassword />,
-          },
-      ]
-    },
+        element : <UnauthenticatedRoute />,
+        children : [
+            {
+                element: <External />,
+                children : [
+                    {
+                        path: "login",
+                        element: <Login />,
+                    },
+                    {
+                        path: "register",
+                        element: <Register />,
+                    },
+                    {
+                        path: "forgot-password",
+                        element: <ForgotPassword />,
+                    },
+                    {
+                        path: "reset-password",
+                        element: <ResetPassword />,
+                    },
+                ]
+            },
+        ]
+    }
 
   ];
 

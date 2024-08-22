@@ -22,7 +22,24 @@ function Main() {
                         "before:content-[''] before:absolute before:inset-0 before:-mb-3.5 before:bg-white/40 before:rounded-2xl before:mx-5",
                     ])}
                 >
-                    <Outlet />
+                    <div className="relative z-10 flex flex-col justify-center w-full h-full py-2 lg:py-32">
+                        <div
+                            className="rounded-[0.8rem] w-[55px] h-[55px] border border-primary/30 flex items-center justify-center">
+                            <div
+                                className="relative flex items-center justify-center w-[50px] rounded-[0.6rem] h-[50px] bg-gradient-to-b from-theme-1/90 to-theme-2/90 bg-white">
+                                <div className="w-[26px] h-[26px] relative -rotate-45 [&_div]:bg-white">
+                                    <div
+                                        className="absolute w-[20%] left-0 inset-y-0 my-auto rounded-full opacity-50 h-[75%]"></div>
+                                    <div className="absolute w-[20%] inset-0 m-auto h-[120%] rounded-full"></div>
+                                    <div
+                                        className="absolute w-[20%] right-0 inset-y-0 my-auto rounded-full opacity-50 h-[75%]"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="mt-10">
+                            <Outlet/>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div
@@ -53,7 +70,7 @@ function Main() {
                     </div>
                 </div>
             </div>
-            <ThemeSwitcher />
+            <ThemeSwitcher/>
         </>
     );
 }

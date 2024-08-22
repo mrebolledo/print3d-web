@@ -1,6 +1,6 @@
 import _ from "lodash";
 
-export interface User {
+export interface FakerUser {
   name: string;
   position: string;
   photo: string;
@@ -21,7 +21,7 @@ const imageAssets = import.meta.glob<{
 
 const fakers = {
   fakeUsers() {
-    const users: Array<User> = [
+    const users: Array<FakerUser> = [
       {
         name: "Tom Hanks",
         position: "Sales Manager",

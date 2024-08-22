@@ -20,9 +20,11 @@ import QuickSearch from "@/components/QuickSearch";
 import SwitchAccount from "@/components/SwitchAccount";
 import NotificationsPanel from "@/components/NotificationsPanel";
 import ActivitiesPanel from "@/components/ActivitiesPanel";
+import {useAuth} from "@/contexts/AuthContext";
 
 function Main() {
   const dispatch = useAppDispatch();
+  const {user, logout} = useAuth();
   const compactMenu = useAppSelector(selectCompactMenu);
   const setCompactMenu = (val: boolean) => {
     localStorage.setItem("compactMenu", val.toString());
@@ -429,13 +431,9 @@ function Main() {
                     />
                   </Menu.Button>
                   <Menu.Items className="w-56 mt-1">
-                    <Menu.Item
-                      onClick={() => {
-                        setSwitchAccount(true);
-                      }}
-                    >
-                      <Lucide icon="ToggleLeft" className="w-4 h-4 mr-2" />
-                      Switch Account
+                    <Menu.Item>
+                        <Lucide icon="User" className="w-4 h-4 mr-2" />
+                        <span>{user?.name}</span>
                     </Menu.Item>
                     <Menu.Divider />
                     <Menu.Item
@@ -472,9 +470,7 @@ function Main() {
                       Profile Info
                     </Menu.Item>
                     <Menu.Item
-                      onClick={() => {
-                        navigate("login");
-                      }}
+                      onClick={logout}
                     >
                       <Lucide icon="Power" className="w-4 h-4 mr-2" />
                       Logout
