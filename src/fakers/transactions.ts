@@ -2,7 +2,7 @@ import _ from "lodash";
 import { formatCurrency } from "@/utils/helper";
 import categories, { type Category } from "./categories";
 import products, { type Product } from "./products";
-import users, { type User } from "./users";
+import users, { type FakerUser } from "./users";
 import transactionStatus, {
   type TransactionStatus,
 } from "./transaction-status";
@@ -11,7 +11,7 @@ import dayjs from "dayjs";
 interface Transaction {
   category: Category;
   orderId: string;
-  user: User;
+  user: FakerUser;
   products: Array<Product>;
   orderStatus: TransactionStatus;
   orderDate: string;

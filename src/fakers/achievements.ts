@@ -1,5 +1,5 @@
 import _ from "lodash";
-import users, { type User } from "./users";
+import users, { type FakerUser } from "./users";
 import events, { type Event } from "./events";
 
 export interface Achievement {
@@ -14,7 +14,7 @@ export interface Achievement {
   level: number;
   duration: string;
   score: number;
-  collaborators: Array<User>;
+  collaborators: Array<FakerUser>;
   event: Event;
 }
 

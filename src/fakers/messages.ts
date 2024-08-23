@@ -1,10 +1,10 @@
 import _ from "lodash";
 import dayjs from "dayjs";
-import users, { type User } from "./users";
+import users, { type FakerUser } from "./users";
 
 export interface Message {
   id: string;
-  sender: User;
+  sender: FakerUser;
   content: string;
   date: string;
   time: string;

@@ -1,10 +1,10 @@
 import _ from "lodash";
-import users, { type User } from "./users";
+import users, { type FakerUser } from "./users";
 
 export interface ProjectDetail {
   title: string;
   link: string;
-  contributors: Array<User>;
+  contributors: Array<FakerUser>;
   image: string;
 }
 

@@ -1,9 +1,9 @@
 import _ from "lodash";
 import dayjs from "dayjs";
-import users, { type User } from "./users";
+import users, { type FakerUser } from "./users";
 
 export interface Mail {
-  sender: User;
+  sender: FakerUser;
   subject: string;
   content: string;
   date: string;

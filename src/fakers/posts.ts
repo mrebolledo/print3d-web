@@ -1,7 +1,7 @@
 import _ from "lodash";
 import dayjs from "dayjs";
 import categories, { type Category } from "./categories";
-import users, { type User } from "./users";
+import users, { type FakerUser } from "./users";
 
 export interface Post {
   title: string;
@@ -10,7 +10,7 @@ export interface Post {
   tags: string[];
   image: string;
   category: Category;
-  author: User;
+  author: FakerUser;
 }
 
 const imageAssets = import.meta.glob<{

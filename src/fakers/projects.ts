@@ -1,11 +1,11 @@
 import _ from "lodash";
 import dayjs from "dayjs";
-import users, { type User } from "./users";
+import users, { type FakerUser } from "./users";
 
 export interface Project {
   projectName: string;
-  projectManager: User;
-  creativeDirector: User;
+  projectManager: FakerUser;
+  creativeDirector: FakerUser;
   dueDate: string;
 }
 

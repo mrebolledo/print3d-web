@@ -1,7 +1,7 @@
 import _ from "lodash";
 import dayjs from "dayjs";
 import { icons } from "@/components/Base/Lucide";
-import users, { type User } from "./users";
+import users, { type FakerUser } from "./users";
 
 export interface Event {
   id: string;
@@ -12,7 +12,7 @@ export interface Event {
   time: string;
   icon: keyof typeof icons;
   organizer: string;
-  attendees: Array<User>;
+  attendees: Array<FakerUser>;
   availableSeats: number;
   registrationLink?: string;
   maxAttendees?: number;

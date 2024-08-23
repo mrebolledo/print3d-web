@@ -1,12 +1,12 @@
 import _ from "lodash";
 import products, { type Product } from "./products";
-import users, { type User } from "./users";
+import users, { type FakerUser } from "./users";
 import dayjs from "dayjs";
 
 export interface Review {
   id: number;
   product: Product;
-  user: User;
+  user: FakerUser;
   rating: number;
   comment: string;
   date: string;

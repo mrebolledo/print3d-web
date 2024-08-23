@@ -1,7 +1,7 @@
 import _ from "lodash";
 import dayjs from "dayjs";
 import categories, { type Category } from "./categories";
-import users, { type User } from "./users";
+import users, { type FakerUser } from "./users";
 
 export interface Product {
   images: Array<{
@@ -13,7 +13,7 @@ export interface Product {
   isActive: boolean;
   stock: number;
   category: Category;
-  buyers: Array<User>;
+  buyers: Array<FakerUser>;
   slug: string;
 }
 
