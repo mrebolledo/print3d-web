@@ -27,7 +27,8 @@ type Permissions = string[];
 
 type UserCredentials = {
     email : string;
-    password : string
+    password : string;
+    rememberMe?: boolean;
 }
 
 type LoginResponse = {

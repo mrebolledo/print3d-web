@@ -48,7 +48,9 @@ const AuthProvider = ({children} : {children : ReactNode}) => {
         };
 
         if (accessToken) {
-            getUserData(accessToken);
+            getUserData(accessToken).then(() => {
+
+            });
         } else {
             setAuthState({
                 ...authState,
@@ -71,13 +73,13 @@ const AuthProvider = ({children} : {children : ReactNode}) => {
               loading: false
           })
       } catch (err) {
-          console.log(err)
+          return Promise.reject(err);
       }
   }
 
   const logout = async () => {
 
-      await logoutAPI().then((res) => {
+      await logoutAPI().then(() => {
           localStorage.removeItem('accessToken');
           localStorage.removeItem('refreshToken');
           setAuthState({

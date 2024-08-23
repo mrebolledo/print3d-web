@@ -19,5 +19,11 @@
   "forgot-password-message" : "Ingrese su correo, si existe en nuestra base de datos se le enviaran instrucciones",
   "send-email" : "Enviame el email",
   "reset-password" : "Cambiar contraseña",
-  "reset-my-password" : "Cambiar mi contraseña"
+  "reset-my-password" : "Cambiar mi contraseña",
+  "invalid-credentials" : "El email y/o constraseña no son validos",
+  "login-successfully" : "Ha iniciado sesion",
+  "complete-form" : "Complete el formulario",
+  "email-required" : "El correo electronico es requerido",
+  "email-valid" : "Debe ser un correo electronico valido",
+  "password-required": "La contraseña es requerida"
 }

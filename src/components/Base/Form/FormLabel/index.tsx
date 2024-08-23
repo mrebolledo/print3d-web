@@ -3,7 +3,7 @@ import { formInlineContext } from "../FormInline";
 import { twMerge } from "tailwind-merge";
 
 type FormLabelProps = React.PropsWithChildren &
-  React.ComponentPropsWithoutRef<"label">;
+  React.ComponentPropsWithoutRef<"label">
 
 function FormLabel(props: FormLabelProps) {
   const formInline = useContext(formInlineContext);
