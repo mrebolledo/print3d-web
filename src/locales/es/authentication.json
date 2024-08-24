@@ -27,5 +27,6 @@
   "email-valid" : "Debe ser un correo electronico valido",
   "password-required": "La contraseña es requerida",
   "email-sent" : "Correo enviado",
-  "forgot-password-email-sent" : "Se ha enviado un correo con instrucciones para que resetee su contraseña."
+  "forgot-password-email-sent" : "Se ha enviado un correo con instrucciones para que resetee su contraseña.",
+  "password-reset-successful" : "Se ha cambiado la contraseña correctamente."
 }

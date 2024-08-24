@@ -38,3 +38,12 @@ export const forgotPasswordAPI = async (email : string) => {
         return Promise.reject(err);
     }
 }
+
+export const resetPasswordAPI = async (data : ResetPasswordData) => {
+    try {
+        const response = await api.post<CommonResponse>("/reset-password", data);
+        return response.data;
+    } catch (err) {
+        return Promise.reject(err);
+    }
+}

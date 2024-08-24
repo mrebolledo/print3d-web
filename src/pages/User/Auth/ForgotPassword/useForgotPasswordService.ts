@@ -44,22 +44,20 @@ export const useForgotPasswordService = () => {
     });
 
     const handleForgotPassword = async (email : string) => {
+        clearErrorAlert();
+        clearSuccessAlert();
         await forgotPasswordAPI(email).then(() => {
-            clearErrorAlert();
-            clearSuccessAlert();
             showToast({
                 type : "success",
                 title : t("email-sent")
             })
             showSuccessAlert(t("forgot-password-email-sent"));
         }).catch(err => {
-            clearSuccessAlert();
-            clearErrorAlert();
             showToast({
                 type : "error",
                 title : t("complete-form")
             });
-            showErrorAlert(err.response.data.error);
+            showErrorAlert(t(err.response.data.message));
         })
     }
 

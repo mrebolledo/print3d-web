@@ -35,3 +35,10 @@ type LoginResponse = {
     access_token : string,
     refresh_token: string
 }
+
+type ResetPasswordData = {
+    email : string;
+    password: string;
+    password_confirmation: string;
+    token : string
+}
