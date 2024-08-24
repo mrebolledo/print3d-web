@@ -6,12 +6,20 @@ import {yupResolver} from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import {useState} from "react";
 import {useNavigate} from "react-router-dom";
+import {useErrorAlert} from "@/components/Forms/ErrorAlert/useErrorAlert";
 
 export const useLoginService = () => {
     const {t} = useTranslation("authentication");
     const navigate = useNavigate();
     const {login} = useAuth();
     const {showToast} = useApp();
+
+    const {
+        errorAlert,
+        clearErrorAlert,
+        showErrorAlert
+    } = useErrorAlert();
+
     const [loading, setLoading] = useState<boolean>(false);
 
     const schema = yup
@@ -35,18 +43,6 @@ export const useLoginService = () => {
         }
     });
 
-    const [errorAlert, setErrorAlert] = useState<FormAlert>({
-        show : false,
-        message: ''
-    });
-
-    const clearErrorAlert = () => {
-        setErrorAlert({
-            show : false,
-            message: ''
-        })
-    }
-
     const handleLogin = async (credentials : UserCredentials) => {
         await login(credentials).then(() => {
             clearErrorAlert();
@@ -59,11 +55,7 @@ export const useLoginService = () => {
                 type : "error",
                 title : t("complete-form")
             })
-            setErrorAlert({
-                ...errorAlert,
-                show: true,
-                message: t(err.response.data.message)
-            });
+            showErrorAlert(t(err.response.data.message));
         })
     }
 

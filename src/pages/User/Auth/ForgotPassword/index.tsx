@@ -1,11 +1,22 @@
-import {useTranslation} from "react-i18next";
-import Alert from "@/components/Base/Alert";
-import Lucide from "@/components/Base/Lucide";
 import {FormInput, FormLabel} from "@/components/Base/Form";
 import Button from "@/components/Base/Button";
+import ErrorAlert from "@/components/Forms/ErrorAlert";
+import SuccessAlert from "@/components/Forms/SuccessAlert";
+import {useForgotPasswordService} from "@/pages/User/Auth/ForgotPassword/useForgotPasswordService";
+import clsx from "clsx";
+import SubmitButton from "@/components/SubmitButton";
 
 function Main() {
-    const {t} = useTranslation("authentication");
+    const {
+        t,
+        errorAlert,
+        successAlert,
+        register,
+        errors,
+        loading,
+        onSubmit,
+        handleNavigate
+    } = useForgotPasswordService()
     return (
         <>
             <div className="text-2xl font-medium">{t("forgot-password")}</div>
@@ -15,56 +26,46 @@ function Main() {
                     {t('login')}
                 </a>
             </div>
-            <Alert
-                variant="outline-primary"
-                className="flex items-center px-4 py-3 my-7 bg-primary/5 border-primary/20 rounded-[0.6rem] leading-[1.7]"
-            >
-                {({dismiss}) => (
-                    <>
-                        <div className="">
-                            <Lucide
-                                icon="Lightbulb"
-                                className="stroke-[0.8] w-7 h-7 mr-2 fill-primary/10"
-                            />
-                        </div>
-                        <div className="ml-1 mr-8">
-                            {t('forgot-password-message')}
-                        </div>
-                        <Alert.DismissButton
-                            type="button"
-                            className="btn-close text-primary"
-                            onClick={dismiss}
-                            aria-label="Close"
-                        >
-                            <Lucide icon="X" className="w-5 h-5"/>
-                        </Alert.DismissButton>
-                    </>
-                )}
-            </Alert>
-            <div className="mt-6">
-                <FormLabel>{t('email')}*</FormLabel>
+            <ErrorAlert data={errorAlert}/>
+            <SuccessAlert data={successAlert}/>
+            <form className={"validate-form"} onSubmit={onSubmit}>
+                <div className="mt-6">
+                <FormLabel
+                    htmlFor="email"
+                >{t('email')}*</FormLabel>
                 <FormInput
+                    {...register('email')}
                     type="text"
-                    className="block px-4 py-3.5 rounded-[0.6rem] border-slate-300/80"
+                    name={'email'}
+                    id={'email'}
                     placeholder="your-email@email.com"
+                    autoComplete={'email'}
+                    className={clsx({
+                        "block px-4 py-3.5 rounded-[0.6rem] border-slate-300/80" : true,
+                        "border-danger" : errors.email
+                    })}
                 />
+                {errors.email && (
+                    <div className="mt-2 text-danger">
+                        {
+                            typeof errors.email.message === "string" &&
+                            t(errors.email.message)
+                        }
+                    </div>
+                )}
                 <div className="mt-5 text-center xl:mt-8 xl:text-left">
-                    <Button
-                        variant="primary"
-                        rounded
-                        className="bg-gradient-to-r from-theme-1/70 to-theme-2/70 w-full py-3.5 xl:mr-3"
-                    >
-                        {t('send-email')}
-                    </Button>
+                    <SubmitButton loading={loading} text={t('send-email')} />
                     <Button
                         variant="outline-secondary"
                         rounded
+                        onClick={handleNavigate}
                         className="bg-white/70 w-full py-3.5 mt-3"
                     >
                         {t('back-to-login')}
                     </Button>
                 </div>
             </div>
+            </form>
         </>
     );
 }
