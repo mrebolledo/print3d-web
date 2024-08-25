@@ -57,7 +57,7 @@ export const useForgotPasswordService = () => {
                 type : "error",
                 title : t("complete-form")
             });
-            showErrorAlert(t(err.response.data.message));
+            showErrorAlert(t(err.response.data.error));
         })
     }
 
