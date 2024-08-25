@@ -1,11 +1,5 @@
 import {Outlet} from 'react-router-dom';
 import clsx from "clsx";
-import Alert from "@/components/Base/Alert";
-import Lucide from "@/components/Base/Lucide";
-import {FormCheck, FormInput, FormLabel} from "@/components/Base/Form";
-import users from "@/fakers/users";
-import Button from "@/components/Base/Button";
-import Tippy from "@/components/Base/Tippy";
 import ThemeSwitcher from "@/components/ThemeSwitcher";
 import {useTranslation} from "react-i18next";
 

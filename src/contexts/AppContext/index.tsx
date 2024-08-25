@@ -1,5 +1,5 @@
 import {createContext, ReactNode, useContext, useState} from "react";
-import AppToast from "@/contexts/AppContext/AppToast";
+import AppToast from "@/components/AppToast";
 
 const AppContext = createContext<AppContextProps>({
     showToast : () => {}
