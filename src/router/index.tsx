@@ -2,7 +2,6 @@ import { useRoutes } from "react-router-dom";
 import Home from "../pages/Home";
 import External from "../themes/Authentication"
 import Login from "../pages/User/Auth/Login";
-import Register from "../pages/User/Auth/Register";
 import ForgotPassword from "../pages/User/Auth/ForgotPassword";
 import ResetPassword from "../pages/User/Auth/ResetPassword";
 
@@ -34,10 +33,6 @@ function Router() {
                     {
                         path: "login",
                         element: <Login />,
-                    },
-                    {
-                        path: "register",
-                        element: <Register />,
                     },
                     {
                         path: "forgot-password",

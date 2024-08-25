@@ -5,12 +5,10 @@ import * as yup from "yup";
 import {yupResolver} from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import {useState} from "react";
-import {useNavigate} from "react-router-dom";
 import {useErrorAlert} from "@/components/Forms/ErrorAlert/useErrorAlert";
 
 export const useLoginService = () => {
     const {t} = useTranslation("authentication");
-    const navigate = useNavigate();
     const {login} = useAuth();
     const {showToast} = useApp();
 
@@ -83,9 +81,6 @@ export const useLoginService = () => {
         }
     }
 
-    const handleNavigate = () => {
-        navigate("/register");
-    }
 
     return {
         t,
@@ -94,7 +89,6 @@ export const useLoginService = () => {
         handleLogin,
         register,
         errors,
-        loading,
-        handleNavigate
+        loading
     };
 }

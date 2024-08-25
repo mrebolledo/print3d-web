@@ -1,5 +1,4 @@
 import { FormCheck, FormInput, FormLabel } from "@/components/Base/Form";
-import Button from "@/components/Base/Button";
 import ErrorAlert from "@/components/Forms/ErrorAlert";
 import {useLoginService} from "@/pages/User/Auth/Login/useLoginService";
 import clsx from "clsx";
@@ -12,19 +11,13 @@ function Main() {
         onSubmit,
         register,
         errors,
-        loading,
-        handleNavigate
+        loading
     } = useLoginService();
 
     return (
         <>
             <div className="text-2xl font-medium">{t("login")}</div>
-            <div className="mt-2.5 text-slate-600">
-                {t('no-account')}{" "}
-                <a className="font-medium text-primary" href="/register">
-                    {t('register')}
-                </a>
-            </div>
+
             <ErrorAlert data={errorAlert}/>
             <form className="validate-form" onSubmit={onSubmit}>
                 <div className="mt-6">
@@ -94,14 +87,6 @@ function Main() {
                     </div>
                     <div className="mt-5 text-center xl:mt-8 xl:text-left">
                         <SubmitButton loading={loading} text={t('login')} />
-                        <Button
-                            variant="outline-secondary"
-                            rounded
-                            onClick={handleNavigate}
-                            className="bg-white/70 w-full py-3.5 mt-3"
-                        >
-                            {t('register')}
-                        </Button>
                     </div>
                 </div>
             </form>
