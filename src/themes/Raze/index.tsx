@@ -12,28 +12,27 @@ import {
 import { useAppDispatch, useAppSelector } from "@/stores/hooks";
 import { FormattedMenu, linkTo, nestedMenu, enter, leave } from "./side-menu";
 import Lucide from "@/components/Base/Lucide";
-import users from "@/fakers/users";
 import clsx from "clsx";
 import SimpleBar from "simplebar";
-import { Menu } from "@/components/Base/Headless";
-import QuickSearch from "@/components/QuickSearch";
 import SwitchAccount from "@/components/SwitchAccount";
-import NotificationsPanel from "@/components/NotificationsPanel";
-import ActivitiesPanel from "@/components/ActivitiesPanel";
-import {useAuth} from "@/contexts/AuthContext";
+import UserMenu from "@/components/TopBar/UserMenu";
+import Notifications from "@/components/TopBar/Notifications";
+import FullScreenButton from "@/components/TopBar/FullScreenButton";
+import Activities from "@/components/TopBar/Activities";
+import QuickSearch from "@/components/QuickSearch";
 
 function Main() {
   const dispatch = useAppDispatch();
-  const {user, logout} = useAuth();
+  const [quickSearch, setQuickSearch] = useState(false);
   const compactMenu = useAppSelector(selectCompactMenu);
   const setCompactMenu = (val: boolean) => {
     localStorage.setItem("compactMenu", val.toString());
     dispatch(setCompactMenuStore(val));
   };
-  const [quickSearch, setQuickSearch] = useState(false);
+
   const [switchAccount, setSwitchAccount] = useState(false);
-  const [notificationsPanel, setNotificationsPanel] = useState(false);
-  const [activitiesPanel, setActivitiesPanel] = useState(false);
+
+
   const [compactMenuOnHover, setCompactMenuOnHover] = useState(false);
   const [activeMobileMenu, setActiveMobileMenu] = useState(false);
   const location = useLocation();
@@ -56,12 +55,6 @@ function Main() {
     }
   };
 
-  const requestFullscreen = () => {
-    const el = document.documentElement;
-    if (el.requestFullscreen) {
-      el.requestFullscreen();
-    }
-  };
 
   useEffect(() => {
     if (scrollableRef.current) {
@@ -371,125 +364,38 @@ function Main() {
               </Breadcrumb>
               {/* END: Breadcrumb */}
               {/* BEGIN: Search */}
-              <div
-                className="relative justify-center flex-1 hidden xl:flex"
-                onClick={() => setQuickSearch(true)}
-              >
-                <div className="bg-slate-50 border w-[350px] flex items-center py-2 px-3.5 rounded-[0.5rem] text-slate-400 cursor-pointer hover:bg-slate-100 transition-colors">
-                  <Lucide icon="Search" className="w-[18px] h-[18px]" />
-                  <div className="ml-2.5 mr-auto">Quick search...</div>
-                  <div>⌘K</div>
+                <div
+                    className="relative justify-center flex-1 hidden xl:flex"
+                    onClick={() => setQuickSearch(true)}
+                >
+                    <div
+                        className="bg-slate-50 border w-[350px] flex items-center py-2 px-3.5 rounded-[0.5rem] text-slate-400 cursor-pointer hover:bg-slate-100 transition-colors">
+                        <Lucide icon="Search" className="w-[18px] h-[18px]"/>
+                        <div className="ml-2.5 mr-auto">Quick search...</div>
+                        <div>⌘K</div>
+                    </div>
                 </div>
-              </div>
-              <QuickSearch
-                quickSearch={quickSearch}
-                setQuickSearch={setQuickSearch}
-              />
-              {/* END: Search */}
-              {/* BEGIN: Notification & User Menu */}
-              <div className="flex items-center flex-1">
-                <div className="flex items-center gap-1 ml-auto">
-                  <a
-                    href=""
-                    className="p-2 rounded-full hover:bg-slate-100"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      setActivitiesPanel(true);
-                    }}
-                  >
-                    <Lucide icon="LayoutGrid" className="w-[18px] h-[18px]" />
-                  </a>
-                  {/* <a href="" className="p-2 rounded-full hover:bg-slate-100">
-                    <Lucide icon="Moon" className="w-[18px] h-[18px]" />
-                  </a> */}
-                  <a
-                    href=""
-                    className="p-2 rounded-full hover:bg-slate-100"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      requestFullscreen();
-                    }}
-                  >
-                    <Lucide icon="Expand" className="w-[18px] h-[18px]" />
-                  </a>
-                  <a
-                    href=""
-                    className="p-2 rounded-full hover:bg-slate-100"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      setNotificationsPanel(true);
-                    }}
-                  >
-                    <Lucide icon="Bell" className="w-[18px] h-[18px]" />
-                  </a>
+                <QuickSearch
+                    quickSearch={quickSearch}
+                    setQuickSearch={setQuickSearch}
+                />
+                {/* END: Search */}
+                {/* BEGIN: Notification & User Menu */}
+                <div className="flex items-center flex-1">
+                    <div className="flex items-center gap-1 ml-auto">
+                        {/* <a href="" className="p-2 rounded-full hover:bg-slate-100">
+                       <Lucide icon="Moon" className="w-[18px] h-[18px]" />
+                    </a> */}
+                        <Activities/>
+                        <FullScreenButton/>
+                        <Notifications/>
+                    </div>
                 </div>
-                <Menu className="ml-5">
-                  <Menu.Button className="overflow-hidden rounded-full w-[36px] h-[36px] border-[3px] border-slate-200/70 image-fit">
-                    <img
-                      alt="Tailwise - Admin Dashboard Template"
-                      src={users.fakeUsers()[0].photo}
-                    />
-                  </Menu.Button>
-                  <Menu.Items className="w-56 mt-1">
-                    <Menu.Item>
-                        <Lucide icon="User" className="w-4 h-4 mr-2" />
-                        <span>{user?.name}</span>
-                    </Menu.Item>
-                    <Menu.Divider />
-                    <Menu.Item
-                      onClick={() => {
-                        navigate("settings?page=connected-services");
-                      }}
-                    >
-                      <Lucide icon="Settings" className="w-4 h-4 mr-2" />
-                      Connected Services
-                    </Menu.Item>
-                    <Menu.Item
-                      onClick={() => {
-                        navigate("settings?page=email-settings");
-                      }}
-                    >
-                      <Lucide icon="Inbox" className="w-4 h-4 mr-2" />
-                      Email Settings
-                    </Menu.Item>
-                    <Menu.Item
-                      onClick={() => {
-                        navigate("settings?page=security");
-                      }}
-                    >
-                      <Lucide icon="Lock" className="w-4 h-4 mr-2" />
-                      Reset Password
-                    </Menu.Item>
-                    <Menu.Divider />
-                    <Menu.Item
-                      onClick={() => {
-                        navigate("settings");
-                      }}
-                    >
-                      <Lucide icon="Users" className="w-4 h-4 mr-2" />
-                      Profile Info
-                    </Menu.Item>
-                    <Menu.Item
-                      onClick={logout}
-                    >
-                      <Lucide icon="Power" className="w-4 h-4 mr-2" />
-                      Logout
-                    </Menu.Item>
-                  </Menu.Items>
-                </Menu>
-              </div>
-              <ActivitiesPanel
-                activitiesPanel={activitiesPanel}
-                setActivitiesPanel={setActivitiesPanel}
-              />
-              <NotificationsPanel
-                notificationsPanel={notificationsPanel}
-                setNotificationsPanel={setNotificationsPanel}
-              />
-              <SwitchAccount
+                <UserMenu />
+                <SwitchAccount
                 switchAccount={switchAccount}
                 setSwitchAccount={setSwitchAccount}
-              />
+                />
               {/* END: Notification & User Menu */}
             </div>
           </div>
@@ -502,9 +408,11 @@ function Main() {
           { "xl:ml-[91px]": compactMenu },
         ])}
       >
-        <div className="container mt-[65px]">
-          <Outlet />
-        </div>
+          <div className="container mt-[65px]">
+              <div className="grid grid-cols-12 gap-y-10 gap-x-6">
+                  <Outlet/>
+              </div>
+          </div>
       </div>
     </div>
   );
